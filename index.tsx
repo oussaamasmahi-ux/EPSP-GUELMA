@@ -21,7 +21,6 @@ interface Clinic {
   id: string;
   name: string;
   address: string;
-  phone: string;
 }
 
 // --- Constants ---
@@ -395,16 +394,15 @@ const App = () => {
                </div>
                
                {showClinicManager && (
-                 <form className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 p-10 rounded-[3rem] border animate-scale-in ${isDarkMode ? 'bg-slate-950/50 border-slate-800' : 'bg-slate-50 border-slate-200'}`} onSubmit={(e) => {
+                 <form className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 p-10 rounded-[3rem] border animate-scale-in ${isDarkMode ? 'bg-slate-950/50 border-slate-800' : 'bg-slate-50 border-slate-200'}`} onSubmit={(e) => {
                     e.preventDefault();
                     const fd = new FormData(e.currentTarget);
-                    setClinics([...clinics, { id: 'c'+Date.now(), name: fd.get('name') as string, address: fd.get('address') as string, phone: fd.get('phone') as string }]);
+                    setClinics([...clinics, { id: 'c'+Date.now(), name: fd.get('name') as string, address: fd.get('address') as string }]);
                     (e.target as HTMLFormElement).reset();
                  }}>
                     <input name="name" placeholder="اسم العيادة" className={`p-6 rounded-2xl border-2 outline-none font-bold shadow-inner ${isDarkMode ? 'bg-slate-800 border-transparent focus:border-teal-500 text-white' : 'bg-white border-slate-100 focus:border-teal-500 text-slate-900'}`} required />
                     <input name="address" placeholder="العنوان" className={`p-6 rounded-2xl border-2 outline-none font-bold shadow-inner ${isDarkMode ? 'bg-slate-800 border-transparent focus:border-teal-500 text-white' : 'bg-white border-slate-100 focus:border-teal-500 text-slate-900'}`} required />
-                    <input name="phone" placeholder="الهاتف" className={`p-6 rounded-2xl border-2 outline-none font-bold shadow-inner ${isDarkMode ? 'bg-slate-800 border-transparent focus:border-teal-500 text-white' : 'bg-white border-slate-100 focus:border-teal-500 text-slate-900'}`} required />
-                    <button type="submit" className="md:col-span-3 bg-teal-500 text-white font-black py-6 rounded-2xl hover:bg-teal-400 text-2xl shadow-2xl transition-all">تأكيد الإضافة</button>
+                    <button type="submit" className="md:col-span-2 bg-teal-500 text-white font-black py-6 rounded-2xl hover:bg-teal-400 text-2xl shadow-2xl transition-all">تأكيد الإضافة</button>
                  </form>
                )}
 
